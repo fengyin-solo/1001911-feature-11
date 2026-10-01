@@ -33,3 +33,23 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .link { border: none; background: none; color: var(--brand); cursor: pointer; padding: 0; }
 .page-foot { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--muted); }
 .error-text { color: #b42318; }
+.filter-item select { padding: 5px 8px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; }
+.table-hint { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+.rate-cell { white-space: pre-line; max-width: 240px; }
+.op-cell { white-space: pre-line; color: var(--muted); font-size: 12px; max-width: 180px; }
+.status-tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 12px; white-space: nowrap; }
+.tag-pending { background: #eef2ff; color: #3730a3; }
+.tag-normal { background: #ecfdf3; color: #027a48; }
+.tag-missing { background: #fffaeb; color: #b54708; }
+.tag-stopped { background: #fef3f2; color: #b42318; }
+.row-stopped td { background: #fafafa; color: var(--muted); }
+.row-stopped .link:not(.link-disabled) { color: var(--brand); }
+.link-disabled { color: #98a2b3 !important; cursor: not-allowed; text-decoration: line-through; }
+.modal-mask { position: fixed; inset: 0; background: rgba(16, 24, 40, 0.45); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.modal-box { width: 460px; max-width: calc(100vw - 32px); background: #fff; border-radius: 10px; padding: 18px 20px; box-shadow: 0 12px 32px rgba(16, 24, 40, 0.2); }
+.modal-title { margin: 0 0 12px; font-size: 15px; }
+.modal-field { display: block; margin-bottom: 12px; }
+.modal-field span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.modal-field em { color: #b42318; font-style: normal; margin-left: 2px; }
+.modal-field input, .modal-field textarea { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font-size: 13px; font-family: inherit; resize: vertical; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }

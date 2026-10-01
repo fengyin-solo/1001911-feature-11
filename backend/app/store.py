@@ -37,11 +37,16 @@ class Store:
                 "pending": sum(1 for row in rows if row.get("pending")),
                 "abnormal": sum(1 for row in rows if row.get("abnormal")),
             })
+        # 在运测风塔与测风塔台账页共用 MetmastService.in_service_count，两处口径一致
+        from app.services.metmast import MetmastService
+
+        in_service_metmast = MetmastService().in_service_count()
         cards = [
             {"label": "业务模块", "value": len(modules)},
             {"label": "今日新增", "value": sum(int(item["created"]) for item in modules)},
             {"label": "待处理", "value": sum(int(item["pending"]) for item in modules)},
             {"label": "异常量", "value": sum(int(item["abnormal"]) for item in modules)},
+            {"label": "在运测风塔", "value": in_service_metmast},
         ]
         return {"cards": cards, "modules": modules}
 
