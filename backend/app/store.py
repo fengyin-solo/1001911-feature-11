@@ -37,12 +37,21 @@ class Store:
                 "pending": sum(1 for row in rows if row.get("pending")),
                 "abnormal": sum(1 for row in rows if row.get("abnormal")),
             })
+        # 测风塔在运台数：概览与测风塔台账共用 MetmastService.stats 的同一口径
+        from app.services.metmast import MODULE as METMAST_MODULE, MetmastService
+
+        metmast_active = MetmastService().stats()["active"]
         cards = [
             {"label": "业务模块", "value": len(modules)},
             {"label": "今日新增", "value": sum(int(item["created"]) for item in modules)},
             {"label": "待处理", "value": sum(int(item["pending"]) for item in modules)},
             {"label": "异常量", "value": sum(int(item["abnormal"]) for item in modules)},
+            {"label": "测风塔在运台数", "value": metmast_active},
         ]
+        # 模块行里同样带出在运数，供概览与台账核对
+        for item in modules:
+            if item["name"] == METMAST_MODULE:
+                item["active"] = metmast_active
         return {"cards": cards, "modules": modules}
 
 
